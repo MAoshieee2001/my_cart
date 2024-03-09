@@ -1,0 +1,44 @@
+{% extends 'body.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'lib/datatables-1.10.25/css/dataTables.bootstrap5.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'lib/datatables-1.10.25/plugins/responsive-2.2.9/css/responsive.bootstrap5.min.css' %}"/>
+    <script src="{% static 'lib/datatables-1.10.25/js/jquery.dataTables.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.25/js/dataTables.bootstrap5.min.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.25/plugins/responsive-2.2.9/js/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.25/plugins/responsive-2.2.9/js/responsive.bootstrap5.min.js' %}"></script>
+
+    {% block head_list %}{% endblock %}
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title mb-0"><i class="fa-solid fa-magnifying-glass"></i> {{ title }}</h4>
+        </div>
+
+        <div class="card-body">
+            <div class="container-fluid">
+                <table style="width:100%;" class="table table-bordered" id="data">
+                    <thead>
+                    <tr>
+                        <!--Columns-->
+                        {% block columns %}{% endblock %}
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="{{ create_url }}" class="btn btn-primary btn-sm">
+                <i class="fa-solid fa-plus"></i> Nuevo Registro
+            </a>
+            <a href="." class="btn btn-success btn-sm">
+                <i class="fas fa-sync-alt"></i> Actualizar
+            </a>
+        </div>
+    </div>
+{% endblock %}

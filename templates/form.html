@@ -1,0 +1,66 @@
+{% extends 'body.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'lib/jquery-confirm-3.3.4/css/jquery-confirm.min.css' %}">
+    <script src="{% static 'lib/jquery-confirm-3.3.4/js/jquery-confirm.min.js' %}"></script>
+    {% block head_form %}{% endblock %}
+{% endblock %}
+
+{% block content %}
+    <form action="." method="post" data-url="{{ list_url }}">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0"><i class="fa-solid fa-plus"></i> {{ title }}</h4>
+            </div>
+
+            <div class="card-body">
+                <div class="container-fluid">
+                    {% csrf_token %}
+                    <input type="hidden" name="action" value="{{ action }}">
+
+                    {% for field in form %}
+                        <div class="form-group  p-2">
+                            <label>{{ field.label }}</label>
+                            {{ field|add_class:'form-control'|attr:'autocomplete:off' }}
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-success btn-sm">
+                    <i class="fa-solid fa-save"></i> Guardar Registro
+                </button>
+                <a href="{{ list_url }}" class="btn btn-danger btn-sm">
+                    <i class="fas fa-times"></i> Cancelar
+                </a>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block javascript %}
+    <script type="application/javascript">
+        $(function () {
+            $('form').on('submit', function (evt) {
+                evt.preventDefault();
+                let params = new FormData(this);
+                let data_url = $(this).attr('data-url');
+                set_data_server({
+                    params: params,
+                    success: function () {
+                        get_sweetAlert2({
+                            html: 'Se realizo correctamente la acción.',
+                            callback: function () {
+                                location.href = data_url;
+                            }
+                        });
+                    },
+                });
+            });
+        });
+    </script>
+{% endblock %}

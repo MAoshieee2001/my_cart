@@ -1,0 +1,39 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'lib/bootstrap-5.0.2/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="{% static 'lib/bootstrap-5.0.2/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'lib/bootstrap-5.0.2/js/jquery.min.js' %}"></script>
+    <!--fontawesome-->
+    <link rel="stylesheet" href="{% static 'lib/fontawesome-6.1.1/css/all.min.css' %}"/>
+    <!--Sweetalert2-->
+    <script src="{% static 'lib/sweetalert2-11.0.16/js/sweetalert2.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'lib/sweetalert2-11.0.16/css/sweetalert2.min.css' %}">
+    <!--Sweetalert2-->
+    <script src="{% static 'lib/jquery-loading-overlay-2.1.7/js/loadingoverlay.min.js' %}"></script>
+    {% block head %}{% endblock %}
+
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/functions.js' %}"></script>
+    <title>{{ title }}</title>
+</head>
+<body>
+{% include 'header.html' %}
+
+
+<div class="container mt-4 mb-5 px-5">
+    {% block body %}{% endblock %}
+</div>
+
+
+{% block javascript %}{% endblock %}
+
+</body>
+</html>
