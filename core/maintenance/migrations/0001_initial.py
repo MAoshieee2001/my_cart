@@ -35,7 +35,7 @@ class Migration(migrations.Migration):
                 ('stock', models.IntegerField(default=0, verbose_name='Stock')),
                 ('pvp', models.DecimalField(decimal_places=2, default=0.0, max_digits=9, verbose_name='Precio')),
                 ('imagen', models.ImageField(blank=True, null=True, upload_to='products/', verbose_name='Imagen')),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='ecommerce.category', verbose_name='Categoria')),
+                ('category', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='maintenance.category', verbose_name='Categoria')),
             ],
             options={
                 'verbose_name': 'Producto',

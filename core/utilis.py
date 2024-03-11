@@ -4,7 +4,7 @@ from django.db import transaction
 from django.db.transaction import atomic
 
 from config import wsgi, settings
-from core.ecommerce.models import Product, Category
+from core.maintenance.models import Product, Category
 
 
 def insert_category():

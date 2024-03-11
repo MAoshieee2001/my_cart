@@ -5,8 +5,8 @@ from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView
 
-from core.ecommerce.forms import CategoryForm
-from core.ecommerce.models import Category
+from core.maintenance.forms import CategoryForm
+from core.maintenance.models import Category
 
 MODULE_NAME = 'Categoria'
 
@@ -48,8 +48,8 @@ class CategoryTemplateViww(TemplateView):
         context = super(CategoryTemplateViww, self).get_context_data(**kwargs)
         context['title'] = 'Listado de Categoria'
         context['entity'] = MODULE_NAME
-        context['list_url'] = reverse_lazy('ecommerce:category_list')
-        context['create_url'] = reverse_lazy('ecommerce:category_create')
+        context['list_url'] = reverse_lazy('maintenance:category_list')
+        context['create_url'] = reverse_lazy('maintenance:category_create')
         return context
 
 
@@ -57,7 +57,7 @@ class CategoryCreateView(CreateView):
     model = Category
     form_class = CategoryForm
     template_name = 'category/create.html'
-    success_url = reverse_lazy('ecommerce:category_list')
+    success_url = reverse_lazy('maintenance:category_list')
 
     def post(self, request, *args, **kwargs):
         data = {}
@@ -84,7 +84,7 @@ class CategoryUpdateView(UpdateView):
     model = Category
     form_class = CategoryForm
     template_name = 'category/create.html'
-    success_url = reverse_lazy('ecommerce:category_list')
+    success_url = reverse_lazy('maintenance:category_list')
 
     def dispatch(self, request, *args, **kwargs):
         self.object = self.get_object()
@@ -114,7 +114,7 @@ class CategoryUpdateView(UpdateView):
 class CategoryDeleteView(DeleteView):
     model = Category
     template_name = 'delete.html'
-    success_url = reverse_lazy('ecommerce:category_list')
+    success_url = reverse_lazy('maintenance:category_list')
 
     def dispatch(self, request, *args, **kwargs):
         self.object = self.get_object()

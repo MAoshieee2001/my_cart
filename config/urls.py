@@ -6,6 +6,7 @@ from config import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('maintenance/', include('core.maintenance.urls')),
     path('ecommerce/', include('core.ecommerce.urls')),
 ]
 

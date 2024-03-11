@@ -1,6 +1,6 @@
 from django.forms import *
 
-from core.ecommerce.models import *
+from core.maintenance.models import *
 
 
 class CategoryForm(ModelForm):

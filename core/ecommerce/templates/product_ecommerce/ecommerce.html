@@ -1,0 +1,36 @@
+{% extends 'body.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block head %}
+    <script src="{% static 'lib/select2-4.0.13/js/select2.min.js' %}"></script>
+    <script src="{% static 'lib/select2-4.0.13/js/i18n/es.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'lib/select2-4.0.13/css/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/select2-4.0.13/css/select2-bootstrap4.min.css' %}">
+    <script src="{% static 'js/product_ecommerce/list.js' %}"></script>
+
+    <style>
+        .card-img-custom {
+            aspect-ratio: 16 / 9; /* Ajusta la proporción según sea necesario */
+            object-fit: cover; /* Opcional: Recortar o contener la imagen */
+
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="row" id="product-container">
+
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination" id="pagination">
+
+            </ul>
+        </nav>
+    </div>
+
+
+{% endblock %}

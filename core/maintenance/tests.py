@@ -3,7 +3,7 @@ from time import time
 from config import wsgi
 
 # Create your tests here.
-from core.ecommerce.models import Product
+from core.maintenance.models import Product
 
 inicio = time()
 products = Product.objects.select_related('category')
