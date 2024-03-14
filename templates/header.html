@@ -27,6 +27,39 @@
                 <input class="form-control me-2" type="search" placeholder="Buscar Producto..." aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-cart-plus"></i> Carrito de compra
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" id="">
+                        <li class="nav-item">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>Producto</th>
+                                        <th>cantidad</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for i in request.session.cart.products %}
+                                        <tr>
+                                            <td>{{ i.names }}</td>
+                                            <td>{{ i.quantity }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                                subtotal : {{ request.session.cart.subtotal }}
+                                IVA : {{ request.session.cart.iva }}
+                                TOTAL : {{ request.session.cart.total }}
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>

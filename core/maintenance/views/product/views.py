@@ -5,9 +5,9 @@ from django.core.paginator import Paginator
 from django.db.models import Prefetch, Q
 from django.http import HttpResponse, JsonResponse
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView, FormView, ListView
+from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView
 
-from core.maintenance.forms import ProductForm, ProductCategoryForm
+from core.maintenance.forms import ProductForm
 from core.maintenance.models import Product, Category
 
 MODULE_NAME = 'Producto'
@@ -163,6 +163,3 @@ class ProductDeleteView(DeleteView):
         context['action'] = 'delete'
         context['list_url'] = reverse_lazy('maintenance:product_list')
         return context
-
-
-
